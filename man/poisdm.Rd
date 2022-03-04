@@ -14,7 +14,7 @@ poisdm(n, lambda, groupnames)
 \item{groupnames}{names of the groups}
 }
 \value{
-
+a data frame with input values, a histogram, and a jitterplot
 }
 \description{
 Poisson datamaker

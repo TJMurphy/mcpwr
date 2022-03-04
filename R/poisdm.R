@@ -4,7 +4,7 @@
 #' @param lambda group mean
 #' @param groupnames names of the groups
 #'
-#' @return
+#' @return a data frame with input values, a histogram, and a jitterplot
 #' @export
 #' @importFrom rlang .data
 #'
