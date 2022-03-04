@@ -2,26 +2,23 @@
 % Please edit documentation in R/poisdm.R
 \name{poisdm}
 \alias{poisdm}
-\title{Poisson DataMaker}
+\title{Poisson datamaker}
 \usage{
 poisdm(n, lambda, groupnames)
 }
 \arguments{
-\item{n}{Sample size}
+\item{n}{sample size}
 
-\item{lambda}{Mean of sample}
+\item{lambda}{group mean}
 
-\item{groupnames}{Names of groups}
+\item{groupnames}{names of the groups}
 }
 \value{
-Table with input parameters, histogram of simulated values, and scatterpoint of simulated values
+
 }
 \description{
-Poisson DataMaker
+Poisson datamaker
 }
 \examples{
 poisdm(c(40, 50), c(10, 12), c("group1", "group2"))
-poisdm(c(40, 50), c(10, 12), c("group2"))
-poisdm(c(40, 50), c(-10, 12), c("group1", "group2"))
-poisdm(rep(40, 5), rep(10, 5), c("group", "group2", "group3", "group4", "group5"
 }
