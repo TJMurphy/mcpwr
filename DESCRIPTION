@@ -13,3 +13,10 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+Imports: 
+    tidyr,
+    purrr,
+    ggplot2,
+    rlang,
+    dplyr
+RoxygenNote: 7.1.2
