@@ -24,25 +24,26 @@ normdm <- function(k, names= c(...), n= c(...), mean= c(...), sd= c(...)){
                       , mean=mean
                       , sd=sd)
 
-  df1 <- as.data.frame(n , mean , sd)
+  df1 <- data.frame(n , mean , sd)
   df2 <- apply(df1, 1, function(x) stats::rnorm(x[1]
                                                 , mean=x[2]
                                                 , sd=x[3]))
-  df2 <- purrr::map_dfr(.x = list, .f= ~as.data.frame(t(.)))
 
-  colnames(df2) <- names
 
-  df3 <- tidyr::pivot_longer(data=df2
-                             , cols= c(1:ncol(df2))
+  df3 <- as.data.frame(t(purrr::map_dfr(.x = df2, .f= ~as.data.frame(t(.)))))
+
+  colnames(df3) <- names
+
+  df4 <- tidyr::pivot_longer(data=df3
+                             , cols= c(1:ncol(df3))
                              , names_to = "groups"
                              , values_to = "values")
-  simdata <<- as.data.frame(df3)
 
-  simdata <- stats::na.omit(simdata)
+  simdata <- stats::na.omit(df4)
 
   p <- ggplot2:: ggplot(data= simdata
-                        , mapping = ggplot2::aes(x=name, y=value)) +
-    ggplot2:: geom_jitter(mapping = ggplot2::aes(color=name))
+                        , mapping = ggplot2::aes(x=groups, y=values)) +
+    ggplot2:: geom_jitter(mapping = ggplot2::aes(color=groups))
 
   print(p)
   print(parameters)
