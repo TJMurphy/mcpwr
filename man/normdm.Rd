@@ -2,26 +2,30 @@
 % Please edit documentation in R/normdm.R
 \name{normdm}
 \alias{normdm}
-\title{normdm}
+\title{normdm
+Simulates groups of normally distributed data and produces graphic
+visualizations of simulated data}
 \usage{
 normdm(k, names = c(...), n = c(...), mean = c(...), sd = c(...))
 }
 \arguments{
 \item{k}{number of groups to be simulated}
 
-\item{names}{names for each group}
+\item{names}{a vector of character strings representing group names}
 
-\item{n}{sample size of each group}
+\item{n}{a vector of n values representing group sample sizes}
 
-\item{mean}{mean of simulated data for each group}
+\item{mean}{a vector of means}
 
-\item{sd}{standard deviation of simulated data for each group}
+\item{sd}{a vector of standard deviations}
 }
 \value{
 
 }
 \description{
 normdm
+Simulates groups of normally distributed data and produces graphic
+visualizations of simulated data
 }
 \examples{
 normdm(k=5, names= c("control", "low", "medium", "high", "positive"),n= c(50,50,50,50,40), mean = c(10, 5, 6, 7,8), sd= c(1,5,5,5,5))

@@ -1,10 +1,12 @@
 #' normdm
+#' Simulates groups of normally distributed data and produces graphic
+#' visualization of simulated data
 #'
 #' @param k number of groups to be simulated
-#' @param names names for each group
-#' @param n sample size of each group
-#' @param mean mean of simulated data for each group
-#' @param sd standard deviation of simulated data for each group
+#' @param names a vector of character strings representing group names
+#' @param n a vector of n values representing group sample sizes
+#' @param mean a vector of means
+#' @param sd a vector of standard deviations
 #'
 #' @return
 #' @export
@@ -18,11 +20,6 @@ normdm <- function(k, names= c(...), n= c(...), mean= c(...), sd= c(...)){
     print("k value must match length of names, n, mean, and sd")
     stop()
   }
-
-  parameters <<- list(names=names
-                      , n=n
-                      , mean=mean
-                      , sd=sd)
 
   df1 <- data.frame(n , mean , sd)
   df2 <- apply(df1, 1, function(x) stats::rnorm(x[1]
@@ -44,6 +41,11 @@ normdm <- function(k, names= c(...), n= c(...), mean= c(...), sd= c(...)){
   p <- ggplot2:: ggplot(data= simdata
                         , mapping = ggplot2::aes(x=groups, y=values)) +
     ggplot2:: geom_jitter(mapping = ggplot2::aes(color=groups))
+
+  parameters <<- list(names=names
+                      , n=n
+                      , mean=mean
+                      , sd=sd)
 
   print(p)
   print(parameters)

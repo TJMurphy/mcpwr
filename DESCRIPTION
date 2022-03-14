@@ -4,7 +4,7 @@ Title: Monte Carlo Power Calculations
 Version: 0.1.0
 Author: Mackenzie Hoogshagen
 Maintainer: The package maintainer <yourself@somewhere.net>
-Description: Data generators and statistical tests for monte carlo power analyses
+Description: Data generators and statistical tests for monte carlo power analyses.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
