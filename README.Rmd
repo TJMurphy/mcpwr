@@ -29,7 +29,9 @@ devtools::install_github("TJMurphy/mcpwr")
 
 ## Example
 
-The poisdm function is a datamaker for data with a Poisson distribution
+The poisdm function is a datamaker to simulate groups of Poisson-distributed
+count data. The plot argument allows users to print a histogram and
+jitterplot of the output.
 
 ```{r example}
 library(mcpwr)
@@ -38,7 +40,7 @@ library(mcpwr)
 # for group 1 (group of 40 measurements with a mean of 10)
 # and group 2 (group of 50 with measurements with a mean of 12)
 
-poisdm(c(40, 50), c(10, 12), c("group1", "group2"))
+poisdm(c(40, 50), c(10, 12), c("group1", "group2"), TRUE)
 ```
 
 

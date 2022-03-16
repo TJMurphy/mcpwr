@@ -1,17 +1,18 @@
-#' Poisson datamaker
+#' Poisson DataMaker: simulates groups of Poisson-distributed count data.
 #'
 #' @param n sample size
 #' @param lambda group mean
 #' @param groupnames names of the groups
+#' @param plot TRUE or FALSE; generate histogram and jitterplot of output
 #'
-#' @return a data frame with input values, a histogram, and a jitterplot
+#' @return a data frame with input values; if plot == T, also a histogram, and a jitterplot
 #' @export
 #' @importFrom rlang .data
 #'
 #' @examples
-#' poisdm(c(40, 50), c(10, 12), c("group1", "group2"))
+#' poisdm(c(40, 50), c(10, 12), c("group1", "group2"), TRUE)
 
-poisdm <- function(n, lambda, groupnames){
+poisdm <- function(n, lambda, groupnames, plot){
   input <- data.frame(
     groupnames
     , n
@@ -46,32 +47,36 @@ poisdm <- function(n, lambda, groupnames){
 
   colnames(df2) <- groupnames
 
-  dfp <- stats::na.omit(tidyr::pivot_longer(data = df2
-                                            , cols = dplyr::everything()
-                                            , names_to = "group"
-                                            , values_to = "value"))
+  pielou <- stats::na.omit(
+    tidyr::pivot_longer(
+      data = df2
+      , cols = dplyr::everything()
+      , names_to = "group"
+      , values_to = "value"))
 
-  print(ggplot2::ggplot(dfp
-                        , ggplot2::aes(
-                          x = .data$value
-                          , fill = .data$group
-                        )
-  )
-  + ggplot2::geom_histogram(bins = 15
-                            , alpha = .8
-  )
-  + ggplot2::theme_bw())
+  if (plot == T) {
+    print(ggplot2::ggplot(pielou
+                          , ggplot2::aes(
+                            x = .data$value
+                            , fill = .data$group
+                            )
+                          )
+          + ggplot2::geom_histogram(bins = 15
+                                    , alpha = .8
+                                    )
+          + ggplot2::theme_bw())
 
-  print(ggplot2::ggplot(dfp
-                        , ggplot2::aes(
-                          x = .data$group
-                          , y = .data$value
-                          , color = .data$group
-                        )
-  )
-  + ggplot2::geom_jitter()
-  + ggplot2::theme_bw()
-  )
+    print(ggplot2::ggplot(pielou
+                          , ggplot2::aes(
+                            x = .data$group
+                            , y = .data$value
+                            , color = .data$group
+                            )
+                          )
+          + ggplot2::geom_jitter()
+          + ggplot2::theme_bw()
+    )
+    }
 
   print("input")
   print(input)

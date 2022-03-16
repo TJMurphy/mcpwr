@@ -2,9 +2,9 @@
 % Please edit documentation in R/poisdm.R
 \name{poisdm}
 \alias{poisdm}
-\title{Poisson datamaker}
+\title{Poisson DataMaker: simulates groups of Poisson-distributed count data.}
 \usage{
-poisdm(n, lambda, groupnames)
+poisdm(n, lambda, groupnames, plot)
 }
 \arguments{
 \item{n}{sample size}
@@ -12,13 +12,15 @@ poisdm(n, lambda, groupnames)
 \item{lambda}{group mean}
 
 \item{groupnames}{names of the groups}
+
+\item{plot}{TRUE or FALSE; generate histogram and jitterplot of output}
 }
 \value{
-a data frame with input values, a histogram, and a jitterplot
+a data frame with input values; if plot == T, also a histogram, and a jitterplot
 }
 \description{
-Poisson datamaker
+Poisson DataMaker: simulates groups of Poisson-distributed count data.
 }
 \examples{
-poisdm(c(40, 50), c(10, 12), c("group1", "group2"))
+poisdm(c(40, 50), c(10, 12), c("group1", "group2"), TRUE)
 }
