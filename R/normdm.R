@@ -21,6 +21,7 @@ normdm <- function(k, names= c(...), n= c(...), mean= c(...), sd= c(...)){
     stop()
   }
 
+
   df1 <- data.frame(n , mean , sd)
   df2 <- apply(df1, 1, function(x) stats::rnorm(x[1]
                                                 , mean=x[2]
