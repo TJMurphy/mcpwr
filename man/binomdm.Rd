@@ -16,6 +16,8 @@ binomdm(k, n, groupnames, size, prob)
 \item{size}{the number of successes per group}
 
 \item{prob}{probability of success for each group}
+
+\item{plot}{TRUE or FALSE, to generate jitterplot}
 }
 \value{
 a list of the input parameters and simulated data
