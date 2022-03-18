@@ -18,5 +18,6 @@ Imports:
     purrr,
     ggplot2,
     rlang,
-    dplyr
+    dplyr,
+    ggthemes
 RoxygenNote: 7.1.2

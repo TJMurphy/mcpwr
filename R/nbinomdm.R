@@ -1,8 +1,8 @@
 #' Negative Binomial Data Maker
 #'
-#' nbinomdm uses rnbinom function from the stats package to create a data frame
-#' containing different samples for different treatment groups following the
-#' negative binomial distribution. Currently it uses the size and mu parameters
+#' nbinomdm simulates over-dispersed frequency data using the stats::rnbinom function.
+#' It creates a data frame containing different samples for different treatment groups 
+#' following the negative binomial distribution. Currently it uses the size and mu parameters
 #' following the rnbinom function, but not the prob parameter.
 #'
 #' @param k A single value corresponding to the number of treatment groups.
@@ -10,17 +10,19 @@
 #' @param n A vector specifying the sample sizes of the treatment groups.
 #' @param size A vector specifying the dispersion parameters of the negative binomial distributions for the treatment groups. Strictly have to be positive values, not necessarily integers.
 #' @param mu A vector specifying the means of the negative binomial distributions for the treatment groups.
+#' @param hist TRUE or FALSE to return a histogram plot
+#' @param scatter TRUE or FALSE to return a scatter plot
 #'
 #' @return Histogram and jitter plots for the treatment groups and a data frame containing the random samples.
 #' @export
 #' @importFrom rlang .data
 #'
 #' @examples
-#' nbinomdm(k=3,names=c("Control","Treatment1","Treatment2"),n=c(50,50,60),size=c(3,3,3),mu=c(5,10,20))
+#' nbinomdm(3,c("C","T1","T2"),c(50,50,60),c(3,3,3),c(1,5,10),TRUE,FALSE)
 #'
 #'
 
-nbinomdm <- function(k,names,n,size,mu){
+nbinomdm <- function(k,names,n,size,mu,hist,scatter){
   
   if(length(n) != k
      | length(size) != k
@@ -47,17 +49,16 @@ nbinomdm <- function(k,names,n,size,mu){
   ))
   colnames(Data) <- names
   
-  Input_parameters <- data.frame(groups = names
-                                 , n = n
-                                 , size = size
-                                 , mu = mu)
-  
-  
   DataFrame_p <- tidyr::pivot_longer(data = Data
                                      ,cols = dplyr::everything()
                                      ,names_to = "Groups"
                                      ,values_to = "Value")
   DataFrame_p <- stats::na.omit(DataFrame_p)
+  
+  Input_parameters <- data.frame(groups = names
+                                 , n = n
+                                 , size = size
+                                 , mu = mu)
   
   p1 <- ggplot2::ggplot(DataFrame_p,
                         ggplot2::aes(x=.data$Value,fill = .data$Groups)) +
@@ -68,11 +69,14 @@ nbinomdm <- function(k,names,n,size,mu){
     ggplot2::geom_jitter() +
     ggplot2::theme_bw()
   
+  if (hist == T){
   print(p1)
+  }
+  if (scatter == T){
   print(p2)
-  print(Input_parameters)
+  }
   
-  return(Data)
+  return(list(Input_parameters,Data))
   
 }
 

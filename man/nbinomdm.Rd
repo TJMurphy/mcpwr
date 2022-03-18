@@ -4,7 +4,7 @@
 \alias{nbinomdm}
 \title{Negative Binomial Data Maker}
 \usage{
-nbinomdm(k, names, n, size, mu)
+nbinomdm(k, names, n, size, mu, hist, scatter)
 }
 \arguments{
 \item{k}{A single value corresponding to the number of treatment groups.}
@@ -16,18 +16,22 @@ nbinomdm(k, names, n, size, mu)
 \item{size}{A vector specifying the dispersion parameters of the negative binomial distributions for the treatment groups. Strictly have to be positive values, not necessarily integers.}
 
 \item{mu}{A vector specifying the means of the negative binomial distributions for the treatment groups.}
+
+\item{hist}{TRUE or FALSE to return a histogram plot}
+
+\item{scatter}{TRUE or FALSE to return a scatter plot}
 }
 \value{
 Histogram and jitter plots for the treatment groups and a data frame containing the random samples.
 }
 \description{
-nbinomdm uses rnbinom function from the stats package to create a data frame
-containing different samples for different treatment groups following the
-negative binomial distribution. Currently it uses the size and mu parameters
+nbinomdm simulates over-dispersed frequency data using the stats::rnbinom function.
+It creates a data frame containing different samples for different treatment groups 
+following the negative binomial distribution. Currently it uses the size and mu parameters
 following the rnbinom function, but not the prob parameter.
 }
 \examples{
-nbinomdm(k=3,names=c("Control","Treatment1","Treatment2"),n=c(50,50,60),size=c(3,3,3),mu=c(5,10,20))
+nbinomdm(3,c("C","T1","T2"),c(50,50,60),c(3,3,3),c(1,5,10),TRUE,FALSE)
 
 
 }
