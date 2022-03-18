@@ -1,22 +1,20 @@
-#' Lognormal Data Maker : lnormdm
-#'
 #' A sandbox to create and plot lognormal data.
 #' Enter any number of treatment groups, their names, their respective log means, and their log standard deviations.
 #' Treatment groups can be uneven sizes.
 #' k must correspond with the number of values in names, meanlog, and sdlog.
 #'
-#' @param k is the number of treatment groups.
-#' @param names are the names of the treatment groups.
-#' @param n is the size of each treatment group.
-#' @param meanlog is the log mean of each treatment group.
-#' @param sdlog is the log standard deviation of each treatment group.
+#' @param k a vector of character strings of length k defining the treatment groups.
+#' @param names a vector of names defining the treatment groups.
+#' @param n a vector of sample sizes of each treatment group.
+#' @param meanlog a vector of log means for each treatment group.
+#' @param sdlog a vector of log sds for each treatment group.
 #'
 #' @return ggplot,data
 #' @export
 #' @importFrom rlang .data
 #'
 #' @examples
-#' lnormdm(3,names=c("Ctrl","Treat1","Treat2"),n=c(30,50,50),meanlog=c(3,4,3),sdlog=c(1,1,1))
+#' lnormdm(k=3,names=c("Ctrl","Treat1","Treat2"),n=c(30,50,50),meanlog=c(3,4,3),sdlog=c(1,1,1))
 #'
 #'
 #'
@@ -33,11 +31,6 @@ lnormdm <- function(k, names, n, meanlog, sdlog){
     stop()
   }
 
-  parameters <- list(names=names
-                     , n=n
-                     , meanlog=meanlog
-                     , sdlog=sdlog)
-
 
   df1 = data.frame(n , meanlog , sdlog )
 
@@ -47,14 +40,7 @@ lnormdm <- function(k, names, n, meanlog, sdlog){
 
   df2 = as.data.frame(df2)
 
-  colnames(df2) = names
-
-  simulateddata = df2
-
   simdata = tidyr::pivot_longer(data=df2, cols= c(1:ncol(df2)))
-
-  simdata = data.frame(simdata)
-
 
   simdata = stats::na.omit(simdata)
 
@@ -66,6 +52,17 @@ lnormdm <- function(k, names, n, meanlog, sdlog){
     ggthemes::theme_tufte() +
     ggplot2::ggtitle("Simulated Data") +
     ggplot2::labs(x="Group",y="Value",color="Treatment Groups")
+
+
+  colnames(df2) = names
+
+  simulateddata = df2
+
+  parameters <- list(k=k
+                     ,names=names
+                     , n=n
+                     , meanlog=meanlog
+                     , sdlog=sdlog)
 
 
   print(P)
