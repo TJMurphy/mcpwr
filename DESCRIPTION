@@ -1,11 +1,10 @@
 Package: mcpwr
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Lognormal Data Maker
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: Nadia Raytselis
+Maintainer: The package maintainer <nraytse@emory.edu>
+Description: The package generates lognormal data based on user-inputted meanlog and sdlog values. The resulting can be used for Monte Carlo Power Analyses.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -13,3 +12,13 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+Imports: 
+    tibble,
+    stats,
+    purrr,
+    dplyr,
+    tidyr,
+    ggplot2,
+    ggthemes,
+    rlang
+RoxygenNote: 7.1.2
