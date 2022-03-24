@@ -1,10 +1,10 @@
 Package: mcpwr
 Type: Package
-Title: Monte Carlo Power Calculations
+Title: foo
 Version: 0.1.0
-Author: Mackenzie Hoogshagen
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: Data generators and statistical tests for monte carlo power analyses.
+Author: foo
+Maintainer: TJ Murphy <medtjm@emory.edu>
+Description: foo
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -12,11 +12,14 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
-RoxygenNote: 7.1.2
 Imports: 
-    tidyr,
-    purrr,
-    ggplot2,
-    stats,
     tibble,
-    dplyr
+    stats,
+    purrr,
+    dplyr,
+    tidyr,
+    ggplot2,
+    ggthemes,
+    rlang
+RoxygenNote: 7.1.2
+
