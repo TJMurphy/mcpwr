@@ -1,20 +1,26 @@
 Package: mcpwr
 Type: Package
-Title: What the Package Does (Title Case)
+Title: foo
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Author: foo
+Maintainer: TJ Murphy <medtjm@emory.edu>
+Description: foo
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
-RoxygenNote: 7.1.2
 Imports: 
+    tibble,
+    stats,
     purrr,
+    dplyr,
+    tidyr,
     ggplot2,
-    tidyr
+    ggthemes,
+    rlang
+RoxygenNote: 7.1.2
+
