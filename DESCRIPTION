@@ -1,12 +1,10 @@
 Package: mcpwr
 Type: Package
-Title: Monte Carlo Power Functions
+Title: foo
 Version: 0.1.0
-Author: Group pielou
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: poisdm is a datamaker which simulates groups of Poisson-distributed
-    count data, given sample sizes,  means of groups, and group names, with an
-    option to plot a histogram and scatterplot.
+Author: foo
+Maintainer: TJ Murphy <medtjm@emory.edu>
+Description: foo
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -15,12 +13,14 @@ Suggests:
     rmarkdown,
     testthat (>= 3.0.0)
 VignetteBuilder: knitr
-RoxygenNote: 7.1.2
-Config/testthat/edition: 3
 Imports: 
+    tibble,
+    stats,
     purrr,
     dplyr,
+    tidyr,
     ggplot2,
-    rlang,
-    stats,
-    tidyr
+    ggthemes,
+    rlang
+RoxygenNote: 7.1.2
+
