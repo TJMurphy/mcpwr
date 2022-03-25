@@ -80,5 +80,7 @@ poisdm <- function(n, lambda, groupnames, plot){
 
   print("input")
   print(input)
+  print("generated_data")
+  print(pielou)
 
 }
