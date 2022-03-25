@@ -58,15 +58,13 @@ lnormdm <- function(k, names, n, meanlog, sdlog){
 
   simulateddata = df2
 
-  simdata = pivot_longer(data=simulateddata,cols=everything(),names_to="Treatment",values_to="Values")
-
   parameters = list(k=k
                      ,names=names
                      , n=n
                      , meanlog=meanlog
                      , sdlog=sdlog)
 
-  optimalparameters <<- parameters
+  MOP <<- parameters
 
   return(list(params=parameters,df=simulateddata,dist="lnormdm"))
 
