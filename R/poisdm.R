@@ -78,9 +78,8 @@ poisdm <- function(n, lambda, groupnames, plot){
     )
     }
 
-  print("input")
-  print(input)
-  print("generated_data")
-  print(pielou)
+  param = as.list(input)
+
+  return(list(param = param, simdata = df2, distrib = "poisson"))
 
 }
