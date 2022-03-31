@@ -43,4 +43,4 @@ library(mcpwr)
 poisdm(c(40, 50), c(10, 12), c("group1", "group2"), TRUE)
 ```
 
-
+Input parameters are listed as \$param and simmulated data as \$simdata

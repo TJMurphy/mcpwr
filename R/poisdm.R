@@ -78,7 +78,8 @@ poisdm <- function(n, lambda, groupnames, plot){
     )
     }
 
-  print("input")
-  print(input)
+  param = as.list(input)
+
+  return(list(param = param, simdata = df2, distrib = "poisson"))
 
 }
