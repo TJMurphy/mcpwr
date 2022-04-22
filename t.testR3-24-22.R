@@ -1,19 +1,19 @@
 
-t.pwr <- function(sims,MOP,alternative,paired,var.equal,conf.level){
+t.pwr <- function(ssims,alpha,MOP,alternative,paired,var.equal,conf.level){
 
+  k=MOP[[1]]
+  names=MOP[[2]]
   n1=MOP[[3]][[1]]
   n2=MOP[[3]][[2]]
   meanlog1=MOP[[4]][[1]]
   sdlog1=MOP[[5]][[1]]
   meanlog2=MOP[[4]][[2]]
   sdlog2=MOP[[5]][[2]]
-  alpha=0.05
-  ssims=100
   p.values <- c()
   i <- 1
 
   repeat{
-    data1 <-lnormdm(k=2, names=c("Ctrl","Treat1"),n=c(n1,n2), meanlog=c(meanlog1,meanlog2), sdlog=c(sdlog1,sdlog2))$df
+    data1 <<-lnormdm(k=k, names=names,n=c(n1,n2), meanlog=c(meanlog1,meanlog2), sdlog=c(sdlog1,sdlog2))$df
     p <- t.test(x=data1$Ctrl,
                 y=data1$Treat1,
                 alternative=alternative,
@@ -31,5 +31,5 @@ t.pwr <- function(sims,MOP,alternative,paired,var.equal,conf.level){
 }
 
 
-t.pwr(sims=10,MOP=MOP,alternative="two.sided", paired=F,var.equal=T,conf.level=0.95)
+t.pwr(ssims=10,alpha=0.05,MOP=MOP,alternative="two.sided", paired=F,var.equal=T,conf.level=0.95)
 

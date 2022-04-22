@@ -14,11 +14,12 @@
 #' @importFrom rlang .data
 #'
 #' @examples
-#' lnormdm(k=2,names=c("Ctrl","Treat1"),n=c(30,50),meanlog=c(3,4),sdlog=c(1,1))
+#' lnormdm(k=2,names=c("Ctrl","Treat1"),n=c(30,50),meanlog=c(3,4),sdlog=c(1,1)) for t.test
+#' lnormdm(k=3,names=c("Ctrl","Treat1","Treat2"),n=c(30,50,50),meanlog=c(30,20,30),sdlog=c(1,1,1)) for anova
 #'
 #'
 #'
-lnormdm <- function(k, names, n, meanlog, sdlog){
+ lnormdm <- function(k, names, n, meanlog, sdlog){
 
 
   if(k != (length(n)
@@ -58,17 +59,23 @@ lnormdm <- function(k, names, n, meanlog, sdlog){
 
   simulateddata = df2
 
+  simdata = tidyr::pivot_longer(data=simulateddata,cols=everything(),names_to="Treatment",values_to="Values")
+
   parameters = list(k=k
-                     ,names=names
-                     , n=n
-                     , meanlog=meanlog
-                     , sdlog=sdlog)
+                    ,names=names
+                    , n=n
+                    , meanlog=meanlog
+                    , sdlog=sdlog)
 
   MOP <<- parameters
 
-  return(list(params=parameters,df=simulateddata,dist="lnormdm"))
+  X <- nrow(simdata)
+  wid <- seq(1,X,by=1)
+
+  anovaoutput = data.frame(simdata,wid)
+
+  return(list(params=parameters,df=simulateddata,anovaoutput=anovaoutput,dist="lnormdm"))
 
 }
-
 
 
