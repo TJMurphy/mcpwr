@@ -1,8 +1,9 @@
 ---
-title: "Using Monte Carlo Power Functions"
+title: "mcpwr-nbinomdm-vignette"
+author: "Ananya Saha"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{mcpwr-vignette}
+  %\VignetteIndexEntry{my-vignette}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -15,6 +16,5 @@ knitr::opts_chunk$set(
 ```
 
 ```{r setup}
-#library(mcpwr)
+library(mcpwr)
 ```
-
